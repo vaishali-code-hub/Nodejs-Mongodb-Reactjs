@@ -23,12 +23,10 @@ function App() {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
       const newProductList = products.filter((product) => {
-        return product.Handle.toLowerCase()
-          .replaceAll("-", " ")
-          .includes(searchTerm.toLowerCase()) /* ||
-          product["Variant SKU"]
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) */;
+        return Object.values(product)
+          .join("")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
       });
 
       setSearchResults(newProductList);
